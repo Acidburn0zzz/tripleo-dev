@@ -15,6 +15,8 @@ prerequisites
 usage
 -----
 
+first edit required settings in ./localrc
+
 Install a new tripleo environment from scratch:
 ```bash
 ./bin/from_scratch
