@@ -1,0 +1,6 @@
+#!/bin/bash
+set -eux
+root=$(dirname $0)/..
+source $root/lib/functions
+
+run-parts --verbose --exit-on-error --regex "^[3-9][0-9]*" $root/parts 2> >(yellow)

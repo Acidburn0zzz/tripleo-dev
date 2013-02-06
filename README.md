@@ -15,20 +15,23 @@ prerequisites
 usage
 -----
 
-first edit required settings in ./localrc
+**first, edit required settings in ./localrc**
 
 Install a new tripleo environment from scratch:
 ```bash
 ./bin/from_scratch
 ```
 
-(TODO) Reset the baremetal vms, and 're-stack', __preserving the bootstrap vm__:
+Reset the baremetal vms, and 're-stack', __preserving the bootstrap vm__:
+this will also deploy heat stack 'all-components':
 ```bash
 ./bin/re-stack
 ```
-(TODO) Deploy a heat stack onto baremetal vms:
-```bash
-./bin/heat-deploy <stack>
+
+
+ssh into the bootstrap node:
+```
+./bin/ssh_bootstrap
 ```
 
 To re-run parts of the process individually, just run the corresponding part from /parts`:
@@ -44,3 +47,4 @@ parts
 ├── 30-re-stack
 └── 35-populate-bm-db
 ```
+You can safely restart from any point in the process - the scripts are idempotent, provided localrc has not changed.

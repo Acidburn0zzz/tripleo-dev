@@ -1,5 +1,1 @@
-- another pass over docs
-- squid
-- baremetal ssh creds
-- kick off heat
-- document where source trees are installed
+- make squid work transparently

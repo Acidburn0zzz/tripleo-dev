@@ -1,0 +1,8 @@
+#!/bin/bash
+set -eux
+root=$(dirname $0)/..
+source $root/lib/functions
+
+ip=$($root/bin/get-vm-ip bootstrap)
+
+exec ssh stack@$ip
