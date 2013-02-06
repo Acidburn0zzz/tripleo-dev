@@ -4,5 +4,18 @@ source $root/lib/functions
 
 run_in_bootstrap "devstack/unstack.sh || echo \'devstack not running\'"
 
+
+# TODO: only add config once
+run_in_bootstrap "cat >> incubator/localrc <<-eof
+BM_POWER_MANAGER=nova.virt.baremetal.virtual_power_driver.VirtualPowerManager
+EXTRA_BAREMETAL_OPTS=( \
+net_config_template=/opt/stack/nova/nova/virt/baremetal/net-static.ubuntu.template \
+virtual_power_ssh_host=192.168.122.1 \
+virtual_power_type=virsh \
+virtual_power_host_user=$virtual_power_user \
+virtual_power_host_pass=$virtual_power_pass \
+)
+eof"
+
 run_in_bootstrap "cd incubator && ./scripts/demo"
 

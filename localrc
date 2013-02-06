@@ -6,8 +6,8 @@ set -eux
 #
 
 # host machine creds, for virtualpowermanager
-export host_username=myuser
-export host_pass=mypass
+export virtual_power_user=MY_USER
+export virtual_power_pass=MY_PASS
 
 
 #
