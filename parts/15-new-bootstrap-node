@@ -16,7 +16,7 @@ sudo virsh start bootstrap
 sleep 5
 
 set +x
-echo "in another console, run:" > >(green)
+echo "If this is taking a while, in another console, run:" > >(green)
 echo "   \`sudo virsh console bootstrap\`" > >(green)
 echo "and hit <enter> to prod the vm into booting" > >(green)
 
