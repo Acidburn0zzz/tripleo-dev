@@ -1,0 +1,6 @@
+#!/bin/bash
+source $(dirname $0)/../tripleorc
+
+boostrap_ip=$bin/get-vm-ip bootstrap
+
+scp $images/demo.qcow2 stack@$bootstrap_ip:devstack/files/.

@@ -1,0 +1,22 @@
+#!/bin/bash
+set -eux
+source $(dirname $0)/../tripleorc
+
+sudo virsh destroy  bootstrap || echo "bootstrap not running"
+sudo virsh undefine bootstrap || echo "bootstrap vm not defined"
+
+sudo cp $images/bootstrap.qcow2 /var/lib/libvirt/images/.
+
+$incubator_root/bootstrap/configure-bootstrap-vm --image /var/lib/libvirt/images/bootstrap.qcow2
+
+sudo virsh start bootstrap
+
+set +x
+echo
+echo "waiting for bootstrap vm to boot"
+while ! sudo $bin/get-vm-ip bootstrap 1>&2 2>/dev/null; do
+  echo -n '.'
+  sleep 1
+done
+set -x
+echo

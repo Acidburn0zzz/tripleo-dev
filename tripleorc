@@ -1,0 +1,26 @@
+#!/bin/bash
+set -eux
+
+# check out code here
+export tripleo=$HOME/tripleo
+
+# configure a proxy for package caching
+export http_proxy="http://localhost:3128"
+
+# store images here
+export images=$tripleo/images
+
+# include these elements in all images
+export always_elements="base local-config stackuser"
+
+export dib_root=$tripleo/diskimage-builder
+export dib_repo="git@github.com:stackforge/diskimage-builder.git"
+
+export incubator_root=$tripleo/incubator
+export incubator_repo="git@github.com:tripleo/incubator.git"
+
+export bm_poseur_root=$tripleo/bm_poseur
+export bm_poseur_repo="git@github.com:tripleo/bm_poseur.git"
+
+export root="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+export bin=$root/bin

@@ -1,0 +1,9 @@
+#!/bin/bash
+set -eux
+root=$(dirname $0)/..
+
+function red {
+  while read line; do echo -e "\e[01;31m$line\e[0m" >&2; done
+}
+
+run-parts --verbose --exit-on-error $root/parts 2> >(red)
