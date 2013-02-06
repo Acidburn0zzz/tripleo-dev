@@ -15,7 +15,7 @@ export host_pass=mypass
 #
 
 # include these elements in all images built on host
-export always_elements="base local-config stackuser"
+export always_elements="local-config stackuser"
 
 # include these packages in all images built on host
 export always_packages="tmux,squid3"
