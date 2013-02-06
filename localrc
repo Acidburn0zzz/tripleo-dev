@@ -34,3 +34,6 @@ export images=$git_root/images
 # need these forks until some changes are upstream
 export dib_repo=git@github.com:echohead/diskimage-builder.git
 export dib_branch=tripleo-dev
+
+export dib_repo=git@github.com:echohead/incubator.git
+export dib_branch=tripleo-dev
