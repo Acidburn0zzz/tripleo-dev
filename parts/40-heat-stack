@@ -5,7 +5,7 @@ source $root/lib/functions
 cmd=$(cat <<eof
 source devstack/openrc &&
 PATH=\$PATH:/opt/stack/diskimage-builder/bin/ \
-incubator/scripts/deploystack --kernel demo-initrd --initrd demo-initrd incubator/stacks/all-components.yaml --extra base stackuser
+incubator/scripts/deploystack --kernel demo-initrd --initrd demo-initrd incubator/stacks/keystone.yaml --extra base stackuser
 eof
 )
 
