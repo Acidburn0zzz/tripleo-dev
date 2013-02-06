@@ -28,11 +28,16 @@ this will also deploy heat stack 'all-components':
 ./bin/re-stack
 ```
 
+Re-run starting from some point in the middle:
+```bash
+./bin/run-parts "^[3-9][0-9]"
+```
 
 ssh into the bootstrap node:
 ```
 ./bin/ssh_bootstrap
 ```
+
 
 To re-run parts of the process individually, just run the corresponding part from /parts`:
 ```bash

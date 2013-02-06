@@ -1,0 +1,11 @@
+#!/bin/bash
+set -eux
+root=$(dirname $0)/..
+source $root/lib/functions
+
+if [ "$#" -eq 0 ]; then
+  echo "usage: run-parts REGEXP"
+  exit 1
+fi
+
+run-parts --verbose --regex "$1" --exit-on-error $root/parts 2> >(yellow)
