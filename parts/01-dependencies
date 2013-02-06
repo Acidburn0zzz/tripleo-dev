@@ -2,7 +2,10 @@
 set -eux
 source $(dirname $0)/../tripleorc
 
-DEBIAN_FRONTEND=noninteractive sudo apt-get install --yes python-lxml python-libvirt libvirt-bin qemu-system qemu-kvm
+mkdir -p $tripleo
+mkdir -p $images
+
+DEBIAN_FRONTEND=noninteractive sudo apt-get install --yes python-lxml python-libvirt libvirt-bin qemu-system qemu-kvm git
 
 ls $dib_root       || git clone -b $dib_branch $dib_repo $dib_root
 ls $incubator_root || git clone -b $incubator_branch $incubator_repo $incubator_root
@@ -11,6 +14,3 @@ ls $bm_poseur_root || git clone -b $bm_poseur_branch $bm_poseur_repo $bm_poseur_
 grep bmposeur /etc/network/interfaces || sudo $bm_poseur_root/bm_poseur --bridge-ip=none create-bridge
 sudo service libvirt-bin restart
 
-mkdir -p $tripleo
-
-mkdir -p $images
