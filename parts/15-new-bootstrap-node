@@ -1,22 +1,26 @@
 #!/bin/bash
 set -eux
 source $(dirname $0)/../tripleorc
+source $(dirname $0)/../lib/functions
 
 sudo virsh destroy  bootstrap || echo "bootstrap not running"
 sudo virsh undefine bootstrap || echo "bootstrap vm not defined"
 
+# my virsh will only run images out of /var/lib/libvirt/images.
 sudo cp $images/bootstrap.qcow2 /var/lib/libvirt/images/.
 
 $incubator_root/bootstrap/configure-bootstrap-vm --image /var/lib/libvirt/images/bootstrap.qcow2
 
 sudo virsh start bootstrap
 
+sleep 5
+
 set +x
-echo
-echo "waiting for bootstrap vm to boot"
-while ! sudo $bin/get-vm-ip bootstrap 1>&2 2>/dev/null; do
-  echo -n '.'
-  sleep 1
-done
+echo "in another console, run:" > >(green)
+echo "   \`sudo virsh console bootstrap\`" > >(green)
+echo "and hit <enter> to prod the vm into booting" > >(green)
+
+wait_for "waiting for bootstrap node to boot" "sudo $bin/get-vm-ip bootstrap"
+
+wait_for "waiting for sshd to be up" "run_in_bootstrap uptime"
 set -x
-echo

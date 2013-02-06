@@ -2,7 +2,7 @@
 set -eux
 source $(dirname $0)/../tripleorc
 
-sudo apt-get install --yes python-lxml python-libvirt libvirt-bin qemu-system
+DEBIAN_FRONTEND=noninteractive sudo apt-get install --yes python-lxml python-libvirt libvirt-bin qemu-system qemu-kvm
 
 ls $dib_root       || git clone $dib_repo $dib_root
 ls $incubator_root || git clone $incubator_repo $incubator_root

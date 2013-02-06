@@ -1,0 +1,50 @@
+#!/bin/bash
+set -eu
+
+function green {
+  set +x
+  while read line; do echo -e "\e[01;32m$line\e[0m" >&2; done
+  set -x
+}
+
+function yellow {
+  set +x
+  while read line; do echo -e "\e[01;33m$line\e[0m" >&2; done
+  set -x
+}
+
+function red {
+  set +x
+  while read line; do echo -e "\e[01;31m$line\e[0m" >&2; done
+  set -x
+}
+
+function wait_for() {
+  local desc=$1
+  local cmd=$2
+
+  set +x
+  echo
+  echo $desc
+  while ! $cmd 1>&2 2>/dev/null; do
+    echo -n '.'
+    sleep 1
+  done
+  set -x
+  echo
+}
+
+function bootstrap_ip {
+  sudo $bin/get-vm-ip bootstrap
+}
+
+function run_in_bootstrap {
+  local cmd=$1
+  ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null stack@$(bootstrap_ip) "$cmd"
+}
+
+function scp_bootstrap {
+  local src=$1
+  local dest=$2
+  scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $src stack@$(bootstrap_ip):$dest
+}

@@ -1,0 +1,6 @@
+#!/bin/bash
+source $(dirname $0)/../tripleorc
+source $root/lib/functions
+
+run_in_bootstrap "cd incubator && ./scripts/demo"
+
