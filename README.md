@@ -31,3 +31,16 @@ Install a new tripleo environment from scratch:
 ./bin/heat-deploy <stack>
 ```
 
+To re-run parts of the process individually, just run the corresponding part from /parts`:
+```bash
+$ tree parts
+parts
+├── 01-dependencies
+├── 05-build-bootstrap-image
+├── 10-build-demo-image
+├── 15-new-bootstrap-node
+├── 20-copy-demo-image
+├── 25-new-baremetal-vms
+├── 30-re-stack
+└── 35-populate-bm-db
+```
