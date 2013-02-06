@@ -20,12 +20,15 @@ export always_elements=$always_elements
 export always_packages=$always_packages
 
 export dib_root=$tripleo/diskimage-builder
-export dib_repo="git@github.com:stackforge/diskimage-builder.git"
+export dib_repo=${dib_repo:-"git@github.com:stackforge/diskimage-builder.git"}
+export dib_branch=${_branch:-"master"}
 
 export incubator_root=$tripleo/incubator
-export incubator_repo="git@github.com:tripleo/incubator.git"
+export incubator_repo=${incubator_repo:-"git@github.com:tripleo/incubator.git"}
+export incubator_branch=${_branch:-"master"}
 
 export bm_poseur_root=$tripleo/bm_poseur
-export bm_poseur_repo="git@github.com:tripleo/bm_poseur.git"
+export bm_poseur_repo=${bm_poseur_repo:-"git@github.com:tripleo/bm_poseur.git"}
+export bm_poseur_branch=${_branch:-"master"}
 
 export bin=$root/bin

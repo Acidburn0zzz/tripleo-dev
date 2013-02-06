@@ -15,7 +15,7 @@ export host_pass=mypass
 #
 
 # include these elements in all images built on host
-export always_elements="tim base local-config stackuser"
+export always_elements="base local-config stackuser"
 
 # include these packages in all images built on host
 export always_packages="tmux,squid3"
@@ -32,4 +32,5 @@ export images=$git_root/images
 # http_proxy="http://localhost:3128"
 
 # need these forks until some changes are upstream
-export dib_repo=git@github.com:stackforge/diskimage-builder.git
+export dib_repo=git@github.com:echohead/diskimage-builder.git
+export dib_branch=tripleo-dev
