@@ -1,0 +1,8 @@
+#!/bin/bash
+source $(dirname $0)/../tripleorc
+source $root/lib/functions
+
+macs=$(sudo $bm_poseur_root/bm_poseur get-macs)
+run_in_bootstrap "for m in $macs; do incubator/scripts/populate-nova-bm-db.sh -i \$m add; done"
+
+

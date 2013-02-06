@@ -2,4 +2,9 @@
 set -eux
 source $(dirname $0)/../tripleorc
 
-echo $todo
+for vm in $(sudo virsh list --all | grep baremetal_ | awk '{print $2}'); do
+  sudo virsh destroy $vm || echo "$vm not running"
+  sudo virsh undefine $vm
+done
+
+sudo $bm_poseur_root/bm_poseur --vms $num_bm_nodes --arch i686 create-vm

@@ -2,5 +2,7 @@
 source $(dirname $0)/../tripleorc
 source $root/lib/functions
 
+run_in_bootstrap "devstack/unstack.sh || echo \'devstack not running\'"
+
 run_in_bootstrap "cd incubator && ./scripts/demo"
 

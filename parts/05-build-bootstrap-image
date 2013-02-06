@@ -2,4 +2,5 @@
 set -eux
 source $(dirname $0)/../tripleorc
 
-$dib_root/bin/disk-image-create -u $always_elements vm devstack -p python-numpy,python-lxml -a i386 -o $images/bootstrap
+$dib_root/bin/disk-image-create -u $always_elements vm devstack \
+    -p python-numpy,python-lxml,$always_packages -a i386 -o $images/bootstrap

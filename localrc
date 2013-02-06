@@ -1,0 +1,35 @@
+#!/bin/bash
+set -eux
+
+#
+# required settings
+#
+
+# host machine creds, for virtualpowermanager
+export host_username=myuser
+export host_pass=mypass
+
+
+#
+# options
+#
+
+# include these elements in all images built on host
+export always_elements="tim base local-config stackuser"
+
+# include these packages in all images built on host
+export always_packages="tmux,squid3"
+
+# where to check out repos
+export git_root=$HOME/tripleo
+
+export num_bm_nodes="3"
+
+# where to stash images
+export images=$git_root/images
+
+# configure a proxy to cache packages: `sudo apt-get install squid3`
+# http_proxy="http://localhost:3128"
+
+# need these forks until some changes are upstream
+export dib_repo=git@github.com:stackforge/diskimage-builder.git

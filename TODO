@@ -1,0 +1,9 @@
+- use localrc
+- another pass over docs
+- stack user sudo
+- squid
+- baremetal ssh creds
+- add macs
+- kick off heat
+- document where source trees are installed
+- use forks in localrc where things aren't upstream yet

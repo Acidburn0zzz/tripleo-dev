@@ -1,9 +1,8 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
-"""
-Requires fping.
-"""
+import os
 
+if not os.geteuid()==0:
+    sys.exit("\nyou must be root to run this\n")
 try:
   from lxml import etree
 except ImportError:
